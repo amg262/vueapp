@@ -7,6 +7,7 @@ const app = new Vue({
         todo: '',
         todos: [],
         favs: [],
+        comp: [],
         selectedTodo: null
     },
 
@@ -15,7 +16,6 @@ const app = new Vue({
         favoriteTodo() {
             this.favs.push(this.todo)
             this.todo = ''
-
         },
 
 
@@ -24,8 +24,9 @@ const app = new Vue({
             this.todo = ''
         },
 
-        removeTodo(index) {
+        removeTodo(index, todo) {
             this.todos.splice(index, 1)
+            this.comp.push(index, todo)
         },
 
         updateTodo() {

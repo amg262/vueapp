@@ -25,25 +25,44 @@
         <b-row>
             <h1>Task List App</h1>
         </b-row>
+        <b-row>
+            <div v-if="!isEditing">
+                <input type="text" v-model="todo">
+                <input @click="storeTodo" type="submit" value="Add">
+            </div>
+            <div v-else>
+                <input type="text" v-model="todo">
+                <input @click="updateTodo" type="submit" value="Update">
+            </div>
+        </b-row>
 
 
-        <div v-if="!isEditing">
-            <input type="text" v-model="todo">
-            <input @click="storeTodo" type="submit" value="Add">
-        </div>
-        <div v-else>
-            <input type="text" v-model="todo">
-            <input @click="updateTodo" type="submit" value="Update">
-        </div>
+        <b-row>
+            <ol>
+                <li v-for="(todo, index) in todos">
+                    {{ todo }}
+                    <button @click="editTodo(index, todo)">Edit</button>
+                    <button @click="removeTodo(index)">Complete</button>
+                </li>
+            </ol>
+        </b-row>
+        <b-row>
+            <ol>
+                <li v-for="(todo, index) in favs">
+                    {{ todo }}
+                    <button @click="editTodo(index, todo)">Edit</button>
+                    <button @click="removeTodo(index)">Complete</button>
+                </li>
+            </ol>
+        </b-row>
+        <b-row>
+            <b-col cols="4" md="4">
+                <li v-for="(todo, index) in favs">
+                    {{ todo }}
 
-        <ol>
-            <li v-for="(todo, index) in todos">
-                {{ todo }}
-                <button @click="editTodo(index, todo)">Edit</button>
-                <button @click="removeTodo(index)">Complete</button>
-            </li>
-        </ol>
-
+                </li>
+            </b-col>
+        </b-row>
         <b-row>
             <b-col cols="4" md="4" v-for="(todo, index) in todos">
                 <b-card
@@ -64,7 +83,7 @@
                     <ol>
 
                         <button @click="editTodo(index, todo)" class="btn btn-success">Edit</button>
-                        <button @click="removeTodo(index)" class="btn btn-danger">Delete</button>
+                        <button @click="removeTodo(index, todo)" class="btn btn-danger">Complete</button>
                         <button @click="favoriteTodo(index, todo)" class="btn btn-danger">Fav</button>
                     </ol>
 
