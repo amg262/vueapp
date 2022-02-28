@@ -6,20 +6,29 @@ const app = new Vue({
         isEditing: false,
         todo: '',
         todos: [],
+        foods:[],
         favs: [],
-        comp: [],
+        eats: [],
+        exps: [],
         selectedTodo: null
     },
 
     methods: {
 
-        favoriteTodo() {
+        favTodo() {
             this.favs.push(this.todo)
-
             console.log(this.favs)
         },
+        eatTodo() {
+            this.eats.push(this.todo)
+            console.log(this.eats)
+        },
+        expTodo(index, todo) {
+            this.todos.splice(index, 1)
 
-
+            this.exps.push(this.todo)
+            console.log(this.exps)
+        },
         storeTodo() {
             this.todos.push(this.todo)
             this.todo = ''
@@ -27,7 +36,7 @@ const app = new Vue({
 
         removeTodo(index, todo) {
             this.todos.splice(index, 1)
-            this.comp.push(index, todo)
+            this.eats.push(index, todo)
         },
 
         unremoveTodo() {
