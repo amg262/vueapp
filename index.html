@@ -64,7 +64,18 @@
                         max-rows=""
                 ></b-form-textarea>
                 <br>
-                <input class="btn btn-primary" @click="storeTodo" type="submit" value="Add">
+                <b-form-file
+                        v-model="file1"
+                        :state="Boolean(file1)"
+                        placeholder="Choose a file or drop it here..."
+                        drop-placeholder="Drop file here..."
+                ></b-form-file>
+                <div class="mt-3">Selected file: {{ file1 ? file1.name : '' }}</div>
+
+                <!-- Plain mode -->
+                <b-form-file v-model="file2" class="mt-3" plain></b-form-file>
+                <div class="mt-3">Selected file: {{ file2 ? file2.name : '' }}</div>
+                <input class="btn btn-primary" @click="storeTodo" type="submit" value="Add Item to the Fridge">
             </b-col>
             <b-col cols="6" md="6" v-else>
                 <b-form-input v-model="todo" placeholder="What is the item called?"></b-form-input>
@@ -77,7 +88,7 @@
                         max-rows=""
                 ></b-form-textarea>
                 <br>
-                <input class="btn btn-info" @click="updateTodo" type="submit" value="Update">
+                <input class="btn btn-info" @click="updateTodo" type="submit" value="Update this fridge item">
 
 
             </b-col>
