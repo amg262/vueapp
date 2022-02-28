@@ -6,7 +6,9 @@ const app = new Vue({
         isEditing: false,
         todo: '',
         todos: [],
-        foods:[],
+        foods:[
+            
+        ],
         favs: [],
         eats: [],
         exps: [],
@@ -31,6 +33,7 @@ const app = new Vue({
         },
         storeTodo() {
             this.todos.push(this.todo)
+
             this.todo = ''
         },
 
