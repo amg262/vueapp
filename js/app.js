@@ -15,7 +15,8 @@ const app = new Vue({
 
         favoriteTodo() {
             this.favs.push(this.todo)
-            this.todo = ''
+
+            console.log(this.favs)
         },
 
 
@@ -29,6 +30,10 @@ const app = new Vue({
             this.comp.push(index, todo)
         },
 
+        unremoveTodo() {
+
+        },
+
         updateTodo() {
             this.todos.splice(this.selectedIndex, 1, this.todo)
             this.todo = ''
@@ -39,6 +44,10 @@ const app = new Vue({
             this.isEditing = true
             this.todo = todo
             this.selectedIndex = index
+        },
+
+        maths() {
+
         }
     }
 

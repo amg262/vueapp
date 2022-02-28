@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>Task List App</title>
+    <title>Fridge Inventory</title>
 
     <!-- Load required Bootstrap and BootstrapVue CSS -->
     <link href="//unpkg.com/bootstrap@4.x/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -18,24 +18,104 @@
 <body>
 <div id="app">
 
-    <b-navbar type="light" variant="primary">
-        <b-navbar-brand class="p-2 bvb"></b-navbar-brand>
-    </b-navbar>
-    <b-container class="p-4" fluid>
-        <b-row>
-            <h1>Task List App</h1>
-        </b-row>
-        <b-row>
-            <div v-if="!isEditing">
-                <input type="text" v-model="todo">
-                <input @click="storeTodo" type="submit" value="Add">
-            </div>
-            <div v-else>
-                <input type="text" v-model="todo">
-                <input @click="updateTodo" type="submit" value="Update">
-            </div>
-        </b-row>
+    <b-navbar toggleable type="dark" variant="dark">
+        <b-navbar-brand href="#">Fridge Inventory</b-navbar-brand>
 
+        <b-navbar-toggle target="navbar-toggle-collapse">
+            <template #default="{ expanded }">
+                <b-icon icon="chevron-bar-up" v-if="expanded"></b-icon>
+                <b-icon icon="chevron-bar-down" v-else></b-icon>
+            </template>
+        </b-navbar-toggle>
+
+        <b-collapse id="navbar-toggle-collapse" is-nav>
+            <!--            <b-navbar-nav class="ml-auto">-->
+            <!--                <b-nav-item href="#">Link 1</b-nav-item>-->
+            <!--                <b-nav-item href="#">Link 2</b-nav-item>-->
+            <!--                <b-nav-item href="#" disabled>Disabled</b-nav-item>-->
+            <!--            </b-navbar-nav>-->
+        </b-collapse>
+    </b-navbar>
+    <b-container class="p-5 m-5" fluid>
+        <b-row>
+            <h1>Fridge Inventory</h1>
+        </b-row>
+<!--        <b-row>-->
+<!--            <div v-if="!isEditing">-->
+<!--                <input type="text" v-model="todo">-->
+<!--                <input @click="storeTodo" type="submit" value="Add">-->
+<!--            </div>-->
+<!--            <div v-else>-->
+<!--                <input type="text" v-model="todo">-->
+<!--                <input @click="updateTodo" type="submit" value="Update">-->
+<!--            </div>-->
+<!--        </b-row>-->
+
+        <b-row>
+            <b-col cols="6" md="6" v-if="!isEditing">
+<!--                <input type="text" v-model="todo">-->
+                <b-form-input v-model="todo" placeholder="What is the item called?"></b-form-input>
+                <br>
+                <b-form-textarea
+                        id="textarea"
+                        v-model="text"
+                        placeholder="Describe the item going into the fridge inventory"
+                        rows="3"
+                        max-rows=""
+                ></b-form-textarea>
+                <br>
+                <input class="btn btn-primary" @click="storeTodo" type="submit" value="Add">
+            </b-col>
+            <b-col cols="6" md="6" v-else>
+                <b-form-input v-model="todo" placeholder="What is the item called?"></b-form-input>
+                <br>
+                <b-form-textarea
+                        id="textarea"
+                        v-model="text"
+                        placeholder="Describe the item going into the fridge inventory"
+                        rows="3"
+                        max-rows=""
+                ></b-form-textarea>
+                <br>
+                <input class="btn btn-info" @click="updateTodo" type="submit" value="Update">
+
+
+            </b-col>
+        </b-row>
+<!--        <div>-->
+<!--            <div>-->
+<!--                <b-form-group-->
+<!--                        content-cols-lg="4"-->
+<!--                        content-cols-sm-->
+<!--                        description="What is the item called?"-->
+<!--                        id="fieldset-horizontal"-->
+<!--                        label="Item Title"-->
+<!--                        label-cols-lg="3"-->
+<!--                        label-cols-sm="4"-->
+<!--                        label-for="input-horizontal"-->
+<!--                >-->
+<!--                    <b-form-input id="input-horizontal" v-model="todo"></b-form-input>-->
+<!--                    <div v-if="!isEditing">-->
+<!--                        <b-button @click="storeTodo" variant="outline-primary">Add</b-button>-->
+<!--                    <div v-else>-->
+<!--                        <b-button @click="updateTodo" variant="outline-primary">Update</b-button>-->
+<!--                    </div>-->
+
+<!--                </b-form-group>-->
+<!--                <b-form-group-->
+<!--                        content-cols-lg="7"-->
+<!--                        content-cols-sm-->
+<!--                        description="Describe the fridge item"-->
+<!--                        id="fieldset-horizontal"-->
+<!--                        label="Item Description"-->
+<!--                        label-cols-lg="3"-->
+<!--                        label-cols-sm="4"-->
+<!--                        label-for="input-horizontal"-->
+<!--                >-->
+<!--                    <b-form-input id="input-horizontal"></b-form-input>-->
+<!--                </b-form-group>-->
+<!--            </div>-->
+<!--        </div>-->
 
         <b-row>
             <ol>
@@ -56,15 +136,22 @@
             </ol>
         </b-row>
         <b-row>
-            <b-col cols="4" md="4">
-                <li v-for="(todo, index) in favs">
+            <ol>
+                <li v-for="(todo, index) in comp">
                     {{ todo }}
-
+                    <button @click="editTodo(index, todo)">Edit</button>
+                    <button @click="removeTodo(index)">Complete</button>
                 </li>
-            </b-col>
+            </ol>
         </b-row>
+        <!--        <div>-->
+        <!--            <b-table :items="todos" hover striped>-->
+
+        <!--            </b-table>-->
+        <!--        </div>-->
+
         <b-row>
-            <b-col cols="4" md="4" v-for="(todo, index) in todos">
+            <b-col cols="3" md="3" v-for="(todo, index) in todos">
                 <b-card
                         class="mb-2"
                         img-alt="Image"
@@ -80,12 +167,21 @@
                     </b-card-text>
 
 
-                    <ol>
+                    <div class="mt-3">
+                        <b-button-group>
+                            <b-button @click="editTodo(index, todo)" variant="success">Edit</b-button>
+                            <b-button @click="removeTodo(index, todo)" variant="info">Eat</b-button>
+                            <b-button @click="favoriteTodo(index, todo)" variant="warning">Buy</b-button>
+                            <b-button @click="favoriteTodo(index, todo)" variant="outline-primary">Exp.</b-button>
+                        </b-button-group>
+                    </div>
+                    <!--                    <ol>-->
 
-                        <button @click="editTodo(index, todo)" class="btn btn-success">Edit</button>
-                        <button @click="removeTodo(index, todo)" class="btn btn-danger">Complete</button>
-                        <button @click="favoriteTodo(index, todo)" class="btn btn-danger">Fav</button>
-                    </ol>
+                    <!--                        <button @click="editTodo(index, todo)" class="btn btn-success">Edit</button>-->
+                    <!--                        <button @click="removeTodo(index, todo)" class="btn btn-danger">Eat</button>-->
+                    <!--                        <button @click="favoriteTodo(index, todo)" class="btn btn-">Buy</button>-->
+                    <!--                        <button @click="favoriteTodo(index, todo)" class="btn btn-danger">Expiring</button>-->
+                    <!--                    </ol>-->
 
                 </b-card>
 
