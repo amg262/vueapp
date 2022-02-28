@@ -1,0 +1,26 @@
+
+
+/* *********************** */
+/*   Bootstrap Overrides  */
+/* *********************** */
+pre {
+    margin: 0;
+    color: inherit;
+}
+.bvb {
+    background-image: url("bvb.png");
+}
+.card-header, .navbar-brand {
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.navbar-brand {
+    font-size: 2em;
+    padding-bottom: 0;
+}
+
+.badge {
+    letter-spacing: .05em;
+}
+

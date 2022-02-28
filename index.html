@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Task List App</title>
+
+    <!-- Load required Bootstrap and BootstrapVue CSS -->
+    <link href="//unpkg.com/bootstrap@4.x/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="http://unpkg.com/bootstrap-vue@2.x/dist/bootstrap-vue.min.css" rel="stylesheet"/>
+    <link crossorigin="anonymous"
+          href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+          integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" rel="stylesheet">
+    <!-- Overrides and custom styles -->
+    <link href="css/app.css" rel="stylesheet">
+</head>
+<body>
+<div id="app">
+
+    <b-navbar type="light" variant="primary">
+        <b-navbar-brand class="p-2 bvb"></b-navbar-brand>
+    </b-navbar>
+    <b-container class="p-4" fluid>
+        <b-row>
+            <h1>Task List App</h1>
+        </b-row>
+
+
+        <div v-if="!isEditing">
+            <input type="text" v-model="todo">
+            <input @click="storeTodo" type="submit" value="Add">
+        </div>
+        <div v-else>
+            <input type="text" v-model="todo">
+            <input @click="updateTodo" type="submit" value="Update">
+        </div>
+
+        <ol>
+            <li v-for="(todo, index) in todos">
+                {{ todo }}
+                <button @click="editTodo(index, todo)">Edit</button>
+                <button @click="removeTodo(index)">Complete</button>
+            </li>
+        </ol>
+
+        <b-row>
+            <b-col cols="4" md="4" v-for="(todo, index) in todos">
+                <b-card
+                        class="mb-2"
+                        img-alt="Image"
+                        img-src=""
+                        img-top
+                        style="max-width: 20rem;"
+                        tag="article"
+                        title="Card Title"
+                >
+                    <b-card-text>
+                        {{ todo }}
+
+                    </b-card-text>
+
+
+                    <ol>
+
+                        <button @click="editTodo(index, todo)" class="btn btn-success">Edit</button>
+                        <button @click="removeTodo(index)" class="btn btn-danger">Delete</button>
+                        <button @click="favoriteTodo(index, todo)" class="btn btn-danger">Fav</button>
+                    </ol>
+
+                </b-card>
+
+
+            </b-col>
+        </b-row>
+        </b-row>
+
+        <!--        <div  v-for="(todo, index) in todos">-->
+        <!--            <b-card-->
+        <!--                    class="mb-2"-->
+        <!--                    img-alt="Image"-->
+        <!--                    img-src=""-->
+        <!--                    img-top-->
+        <!--                    style="max-width: 20rem;"-->
+        <!--                    tag="article"-->
+        <!--                    title="Card Title"-->
+        <!--            >-->
+        <!--                <b-card-text>-->
+        <!--                    {{ todo }}-->
+        <!--                </b-card-text>-->
+
+        <!--                <ol>-->
+        <!--                    {{ todo }}-->
+        <!--                    <button @click="editTodo(index, todo)">Edit</button>-->
+        <!--                    <button @click="removeTodo(index)">Delete</button>-->
+        <!--                </ol>-->
+
+        <!--            </b-card>-->
+        <!--        </div>-->
+        <b-row>
+            <div v-if="!isEditing">
+                <input type="text" v-model="todo">
+                <input @click="storeTodo" type="submit" value="Add">
+            </div>
+            <div v-else>
+                <input type="text" v-model="todo">
+                <input @click="updateTodo" type="submit" value="Update">
+            </div>
+        </b-row>
+    </b-container>
+
+</div>
+
+
+<!-- Load Vue followed by BootstrapVue -->
+<script src="//unpkg.com/vue@2.x/dist/vue.js"></script>
+<script src="//unpkg.com/bootstrap-vue@2.x/dist/bootstrap-vue.js"></script>
+
+<!-- Load the following for BootstrapVueIcons support -->
+<script src="//unpkg.com/bootstrap-vue@2.x/dist/bootstrap-vue-icons.min.js"></script>
+
+<!-- Load the app -->
+<script src="js/components/console.js"></script>
+<script src="js/components/add-form.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
