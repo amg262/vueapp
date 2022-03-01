@@ -8,7 +8,7 @@ const app = new Vue({
 
         todos: [],
         foods: [],
-        favs: [],
+        favorites: [],
         eats: [],
         exps: [],
         selectedTodo: null
@@ -16,9 +16,13 @@ const app = new Vue({
 
     methods: {
         //
-        favTodo() {
-            this.favs.push(this.todo)
+        favoriteTodo() {
+            this.favorites.push(this.todo)
             this.todo = ""
+
+            Console.log(this.todo)
+            Console.log("favs" + this.favorites)
+
         },
         // },
         // eatTodo() {

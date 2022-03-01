@@ -2,7 +2,7 @@ const app = new Vue({
     el: '#app',
 
     // data: all the data for the app
-    data: function() {
+    data: function () {
         return {
             newItem: {
                 name: '',
@@ -19,7 +19,7 @@ const app = new Vue({
     },
     // methods: usually "events" triggered by v-on:
     methods: {
-        addIt: function(e){
+        addIt: function (e) {
             // prevent page from reloading
             //e.preventDefault(); // not needed if using @submit.prevent
 
@@ -39,33 +39,33 @@ const app = new Vue({
             $('#addItemModal').modal('hide');
         },
 
-        removeIt: function(item){
+        removeIt: function (item) {
             console.log(item);
             this.shoppingList.splice(this.shoppingList.indexOf(item), 1);
         }
     },
     // computed: values that are updated and cached if dependencies change
     computed: {
-        needList: function(){
-            return this.shoppingList.filter(function(item){
+        needList: function () {
+            return this.shoppingList.filter(function (item) {
                 return item.category === "need" && !item.purchased
             });
         },
-        gotList: function(){
-            return this.shoppingList.filter(function(item){
+        gotList: function () {
+            return this.shoppingList.filter(function (item) {
                 return item.purchased
             });
         },
-        wantList: function(){
-            return this.shoppingList.filter(function(item){
+        wantList: function () {
+            return this.shoppingList.filter(function (item) {
                 return item.category === "want" && !item.purchased
             });
         },
     },
     //mounted:  called after the instance has been mounted,
-    mounted: function() {
+    mounted: function () {
         // replace local array with one in local storage
-        if(localStorage.getItem('shoppingList')){
+        if (localStorage.getItem('shoppingList')) {
             this.shoppingList = JSON.parse(localStorage.getItem('shoppingList'));
         }
     },
@@ -76,7 +76,7 @@ const app = new Vue({
     watch: {
         shoppingList: {
             // call this function before the data in shoppingList changes
-            handler: function(newList){
+            handler: function (newList) {
                 // store in localStorage
                 localStorage.setItem('shoppingList', JSON.stringify(newList))
             },

@@ -4,14 +4,15 @@ Vue.component('fcard', {
         todos: {
             type: Array,
         },
-        favs: {
+        favorites: {
             type: Array,
         }
     },
 
     methods: {
 
-        favTodo() {
+        //Hooking this up to the butto
+        favoriteTodo() {
             this.$emit("fav", this.todo);
             this.todo = ""
         },
@@ -57,7 +58,7 @@ Vue.component('fcard', {
                 <b-card 
                         class="mb-2"
                         img-alt="Image"
-                        img-src="css/bvb.png"
+                        img-src=""
                         img-top
                         style="max-width: 20rem;"
                         tag="article"
@@ -72,7 +73,7 @@ Vue.component('fcard', {
                         
                             <b-button @click="editTodo(index, todo)" variant="success">Edit</b-button>
                             <b-button  @click="removeTodo(index, todo)" variant="info">Eat</b-button>
-                            <b-button  @click="favTodo()" variant="warning">Buy</b-button>
+                            <b-button  @click="favTodo()" variant="warning">Favorite</b-button>
                             <b-button @click="expTodo(index, todo)" variant="outline-primary">Exp.</b-button>
                         </b-button-group>
                     </div>

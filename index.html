@@ -54,17 +54,6 @@
                         v-model="todo.desc"
                 ></b-form-textarea>
                 <br>
-                <!--                <b-form-file-->
-                <!--                        :state="Boolean(file1)"-->
-                <!--                        drop-placeholder="Drop file here..."-->
-                <!--                        placeholder="Choose a file or drop it here..."-->
-                <!--                        v-model="file1"-->
-                <!--                ></b-form-file>-->
-                <!--                <div class="mt-3">Selected file: {{ file1 ? file1.name : '' }}</div>-->
-
-                <!--                &lt;!&ndash; Plain mode &ndash;&gt;-->
-                <!--                <b-form-file class="mt-3" plain v-model="file2"></b-form-file>-->
-                <!--                <div class="mt-3">Selected file: {{ file2 ? file2.name : '' }}</div>-->
                 <input @click="storeTodo" class="btn btn-primary" type="submit" value="Add Item to the Fridge">
             </b-col>
             <b-col cols="6" md="6" v-else>
@@ -103,9 +92,14 @@
 
             <b-col cols="3" md="3">
                 <h5>Favorites</h5>
+                <list name="Got It" :items="favorites"></list>
+
+                <div v-for="(fav) in favorites">
+                    <div>{{ fav }}</div>
+                </div>
 
                 <ol>
-                    <li v-for="(todo, index) in favs">
+                    <li v-for="(todo, index) in favorites">
                         {{ todo }}
                         <!--                    <button @click="editTodo(index, todo)">Edit</button>-->
                         <!--                    <button @click="removeTodo(index)">Complete</button>-->
@@ -137,8 +131,7 @@
 
         </b-row>
 
-            <fcard :todos="todos"></fcard>
-
+        <fcard :todos="todos"></fcard>
 
     </b-container>
 
