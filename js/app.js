@@ -4,11 +4,10 @@ const app = new Vue({
 
     data: {
         isEditing: false,
-        todo: '',
+        todo: {name: '', desc: ''},
+
         todos: [],
-        foods:[
-            
-        ],
+        foods: [],
         favs: [],
         eats: [],
         exps: [],
@@ -16,47 +15,47 @@ const app = new Vue({
     },
 
     methods: {
-
+        //
         favTodo() {
             this.favs.push(this.todo)
-            console.log(this.favs)
+            this.todo = ""
         },
-        eatTodo() {
-            this.eats.push(this.todo)
-            console.log(this.eats)
-        },
-        expTodo(index, todo) {
-            this.todos.splice(index, 1)
-
-            this.exps.push(this.todo)
-            console.log(this.exps)
-        },
+        // },
+        // eatTodo() {
+        //     this.eats.push(this.todo)
+        //     this.todo = ""
+        //
+        // },
+        // expTodo(todo) {
+        //     this.exps.push(this.todo)
+        //     this.todo = ""
+        // },
         storeTodo() {
             this.todos.push(this.todo)
-
             this.todo = ''
         },
 
-        removeTodo(index, todo) {
-            this.todos.splice(index, 1)
-            this.eats.push(index, todo)
-        },
-
-        unremoveTodo() {
-
-        },
-
-        updateTodo() {
-            this.todos.splice(this.selectedIndex, 1, this.todo)
-            this.todo = ''
-            this.isEditing = false
-        },
-
-        editTodo(index, todo) {
-            this.isEditing = true
-            this.todo = todo
-            this.selectedIndex = index
-        },
+        //
+        // removeTodo(index, todo) {
+        //     this.todos.splice(index, 1)
+        //     this.eats.push(todo)
+        // },
+        //
+        // unremoveTodo() {
+        //
+        // },
+        //
+        // updateTodo() {
+        //     this.todos.splice(this.selectedIndex, 1, this.todo)
+        //     this.todo = ''
+        //     this.isEditing = false
+        // },
+        //
+        // editTodo(index, todo) {
+        //     this.isEditing = true
+        //     this.todo = todo
+        //     this.selectedIndex = index
+        // },
 
         maths() {
 
