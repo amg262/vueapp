@@ -9,30 +9,26 @@ const app = new Vue({
         todos: [],
         foods: [],
         favorites: [],
-        eats: [],
-        exps: [],
+        eaten: [],
+        expired: [],
         selectedTodo: null
     },
 
     methods: {
-
         addFavorite(newFav) {
             this.favorites.push(newFav);
             this.todo = {name: '', desc: ''};
-
-            console.log(newFav);
-            console.log("favs" + this.favorites);
         },
-        // },
-        // eatTodo() {
-        //     this.eats.push(this.todo)
-        //     this.todo = ""
-        //
-        // },
-        // expTodo(todo) {
-        //     this.exps.push(this.todo)
-        //     this.todo = ""
-        // },
+        addEaten(newEaten) {
+            this.eaten.push(newEaten)
+            this.todo = {name: '', desc: ''};
+        },
+        addExpired(newExp) {
+            this.expired.push(newExp)
+            this.todos.splice(newExp, 1)
+
+            this.todo = {name: '', desc: ''};
+        },
         storeTodo() {
             this.todos.push(this.todo)
             this.todo = {name: '', desc: ''}
