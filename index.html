@@ -82,14 +82,12 @@
         <b-row>
             <b-col cols="3" md="3">
                 <h5>Items</h5>
-
-                <ol>
+                <ul>
                     <li v-for="(todo, index) in todos">
+                        {{ todo.qty }}&nbsp; of
                         {{ todo.name }}
-                        <!--                    <button @click="editTodo(index, todo)">Edit</button>-->
-                        <!--                    <button @click="removeTodo(index)">Complete</button>-->
                     </li>
-                </ol>
+                </ul>
             </b-col>
 
             <b-col cols="3" md="3">
@@ -121,7 +119,7 @@
 
         </b-row>
 
-        <fcard :todos="todos" @fav="addFavorite" @eat="addEaten" @exp="addExpired"  @edit="editTodo2"></fcard>
+        <fcard :todos="todos" @fav="addFavorite" @eat="addEaten" @exp="addExpired" @edit="editTodo2"></fcard>
 
     </b-container>
 
@@ -134,7 +132,9 @@
 
 <!-- Load the following for BootstrapVueIcons support -->
 <script src="http://unpkg.com/bootstrap-vue@2.x/dist/bootstrap-vue-icons.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.4/sweetalert2.min.js"
+        integrity="sha512-vDRRSInpSrdiN5LfDsexCr56x9mAO3WrKn8ZpIM77alA24mAH3DYkGVSIq0mT5coyfgOlTbFyBSUG7tjqdNkNw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="js/app.js"></script>
 <script src="js/card.js"></script>
 
