@@ -33,6 +33,7 @@ Vue.component('fcard', {
         expireTodo(todo) {
             this.$emit("exp", todo);
             this.todo = {name: '', qty:'', desc: ''}
+
         },
         // storeTodo() {
         //     this.todos.push(this.todo)
@@ -85,6 +86,7 @@ Vue.component('fcard', {
             img-top
             style="max-width: 20rem;"
             tag="article"
+            
             :title="todo.name"
         >
           <h6>Item:</h6>

@@ -4,7 +4,7 @@ const app = new Vue({
 
     data: {
         isEditing: false,
-        todo: {name: '', qty: 1, desc: ''},
+        todo: {name: 'item', qty: 1, desc: 'desc'},
 
         todos: [],
         foods: [],
@@ -20,12 +20,21 @@ const app = new Vue({
             this.todo = {name: '', qty:'', desc: ''}
         },
         addEaten(newEaten) {
+            newEaten.qty--
             this.eaten.push(newEaten)
+            alert("Item: " + newEaten.name + " | " + "Qty: " + String(newEaten.qty))
+            console.log(newEaten)
+            console.log(newEaten.qty)
+
+
             this.todo = {name: '', qty:'', desc: ''}
         },
         addExpired(newExp) {
             this.expired.push(newExp)
             this.todos.splice(newExp, 1)
+            Console.log("addExpired")
+            console.log(newExp)
+            console.log(newExp.qty)
 
             this.todo = {name: '', qty:'', desc: ''}
         },
