@@ -46,6 +46,8 @@
                 <!--                <input type="text" v-model="todo">-->
                 <b-form-input placeholder="What is the item called?" v-model="todo.name"></b-form-input>
                 <br>
+                <b-form-input placeholder="How many units?" v-model="todo.qty"></b-form-input>
+                <br>
                 <b-form-textarea
                         id="textarea"
                         max-rows=""
@@ -119,7 +121,7 @@
 
         </b-row>
 
-        <fcard :todos="todos" @fav="addFavorite" @eat="addEaten" @exp="addExpired" @edit="editTodo2"></fcard>
+        <fcard :todos="todos" @fav="addFavorite" @eat="addEaten" @exp="addExpired"  @edit="editTodo2"></fcard>
 
     </b-container>
 

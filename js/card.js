@@ -3,6 +3,7 @@ Vue.component('fcard', {
     props: {
         isEditing: false,
         selectedTodo: null,
+
         todos: {
             type: Array,
         },
@@ -22,16 +23,16 @@ Vue.component('fcard', {
         //Hooking this up to the butto
         favoriteTodo(todo) {
             this.$emit("fav", todo);
-            this.todo = {name: '', desc: ''}
+            this.todo = {name: '', qty:'', desc: ''}
         },
         eatTodo(todo) {
             this.$emit("eat", todo);
-            this.todo = {name: '', desc: ''}
+            this.todo = {name: '', qty:'', desc: ''}
 
         },
         expireTodo(todo) {
             this.$emit("exp", todo);
-            this.todo = {name: '', desc: ''}
+            this.todo = {name: '', qty:'', desc: ''}
         },
         // storeTodo() {
         //     this.todos.push(this.todo)
@@ -43,16 +44,30 @@ Vue.component('fcard', {
         //     this.eats.push(todo)
         // },
         updateTodo() {
-            this.todos.splice(this.selectedIndex, 1, this.todo)
-            this.todo = ''
-            this.isEditing = false
+            this.$emit("update", todo);
+
+            console.log('updatetodo')
+            console.log('todo')
+            console.log(todo)
+            console.log('index')
+            console.log(index)
+            console.log('isEditting')
+            console.log(this.isEditing)
+
+            // this.todos.splice(todo, 1, index)
+            // this.todo = {name: '', qty:'', desc: ''}
+            // this.isEditing = false
+            // this.todos.splice(this.selectedIndex, 1, this.todo)
+            // this.todo = ''
+            // this.isEditing = false
         },
         editTodo(todo, index) {
             console.log('edittodo')
+            console.log('<br>')
             console.log("index")
             console.log(index)
             console.log("todo")
-            console.log(todo)
+            console.log(todo.name)
             this.$emit("edit", todo);
 
             this.isEditing = true
@@ -80,6 +95,7 @@ Vue.component('fcard', {
           <div class="mt-3">
             <b-button-group>
 
+              
               <b-button @click="editTodo(todo, index)" variant="success">Edit</b-button>
               <b-button @click="eatTodo(todo)" variant="info">Eat</b-button>
               <b-button @click="favoriteTodo(todo)" variant="warning">Favorite</b-button>

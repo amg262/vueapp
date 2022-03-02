@@ -4,7 +4,7 @@ const app = new Vue({
 
     data: {
         isEditing: false,
-        todo: {name: '', desc: ''},
+        todo: {name: '', qty: 1, desc: ''},
 
         todos: [],
         foods: [],
@@ -17,21 +17,21 @@ const app = new Vue({
     methods: {
         addFavorite(newFav) {
             this.favorites.push(newFav);
-            this.todo = {name: '', desc: ''};
+            this.todo = {name: '', qty:'', desc: ''}
         },
         addEaten(newEaten) {
             this.eaten.push(newEaten)
-            this.todo = {name: '', desc: ''};
+            this.todo = {name: '', qty:'', desc: ''}
         },
         addExpired(newExp) {
             this.expired.push(newExp)
             this.todos.splice(newExp, 1)
 
-            this.todo = {name: '', desc: ''};
+            this.todo = {name: '', qty:'', desc: ''}
         },
         storeTodo() {
             this.todos.push(this.todo)
-            this.todo = {name: '', desc: ''}
+            this.todo = {name: '', qty:'', desc: ''}
         },
 
         //
@@ -46,8 +46,16 @@ const app = new Vue({
         //
         updateTodo(todo, index) {
 
+            console.log('updatetodo')
+            console.log('todo')
+            console.log(todo)
+            console.log('index')
+            console.log(index)
+            console.log('isEditting')
+            console.log(this.isEditing)
+
             this.todos.splice(todo, 1, index)
-            this.todo = {name: '', desc: ''}
+            this.todo = {name: '', qty:'', desc: ''}
             this.isEditing = false
         },
         //
