@@ -44,17 +44,24 @@ const app = new Vue({
         //
         // },
         //
-        // updateTodo() {
-        //     this.todos.splice(this.selectedIndex, 1, this.todo)
-        //     this.todo = ''
-        //     this.isEditing = false
-        // },
+        updateTodo(todo, index) {
+
+            this.todos.splice(todo, 1, index)
+            this.todo = {name: '', desc: ''}
+            this.isEditing = false
+        },
         //
-        // editTodo(index, todo) {
-        //     this.isEditing = true
-        //     this.todo = todo
-        //     this.selectedIndex = index
-        // },
+        editTodo2(todo, index) {
+            console.log("edittodo2")
+            console.log("todo")
+            console.log(todo)
+            console.log("index")
+            console.log(index)
+            this.isEditing = true
+            this.todo = todo
+
+            this.selectedIndex = index
+        },
 
     }
 

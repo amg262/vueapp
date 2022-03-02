@@ -1,6 +1,8 @@
 Vue.component('fcard', {
 
     props: {
+        isEditing: false,
+        selectedTodo: null,
         todos: {
             type: Array,
         },
@@ -40,16 +42,23 @@ Vue.component('fcard', {
         //     this.todos.splice(index, 1)
         //     this.eats.push(todo)
         // },
-        // updateTodo() {
-        //     this.todos.splice(this.selectedIndex, 1, this.todo)
-        //     this.todo = ''
-        //     this.isEditing = false
-        // },
-        // editTodo(index, todo) {
-        //     this.isEditing = true
-        //     this.todo = todo
-        //     this.selectedIndex = index
-        // },
+        updateTodo() {
+            this.todos.splice(this.selectedIndex, 1, this.todo)
+            this.todo = ''
+            this.isEditing = false
+        },
+        editTodo(todo, index) {
+            console.log('edittodo')
+            console.log("index")
+            console.log(index)
+            console.log("todo")
+            console.log(todo)
+            this.$emit("edit", todo);
+
+            this.isEditing = true
+            this.todo = todo
+            this.selectedIndex = index
+        },
     },
     template: `
       <b-row>
@@ -71,7 +80,7 @@ Vue.component('fcard', {
           <div class="mt-3">
             <b-button-group>
 
-<!--              <b-button @click="editTodo(index, todo)" variant="success">Edit</b-button>-->
+              <b-button @click="editTodo(todo, index)" variant="success">Edit</b-button>
               <b-button @click="eatTodo(todo)" variant="info">Eat</b-button>
               <b-button @click="favoriteTodo(todo)" variant="warning">Favorite</b-button>
               <b-button @click="expireTodo(todo)" variant="outline-primary">Exp.</b-button>

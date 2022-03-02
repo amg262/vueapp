@@ -57,7 +57,7 @@
                 <input @click="storeTodo" class="btn btn-primary" type="submit" value="Add Item to the Fridge">
             </b-col>
             <b-col cols="6" md="6" v-else>
-                <b-form-input placeholder="What is the item called?" v-model="todo"></b-form-input>
+                <b-form-input placeholder="What is the item called?" v-model="todo.desc"></b-form-input>
                 <br>
                 <b-form-textarea
                         id="textarea"
@@ -119,7 +119,7 @@
 
         </b-row>
 
-        <fcard :todos="todos" @fav="addFavorite" @eat="addEaten" @exp="addExpired"></fcard>
+        <fcard :todos="todos" @fav="addFavorite" @eat="addEaten" @exp="addExpired" @edit="editTodo2"></fcard>
 
     </b-container>
 
