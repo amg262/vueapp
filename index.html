@@ -83,7 +83,7 @@
 
                 <ol>
                     <li v-for="(todo, index) in todos">
-                        {{ todo }}
+                        {{ todo.name }}
                         <!--                    <button @click="editTodo(index, todo)">Edit</button>-->
                         <!--                    <button @click="removeTodo(index)">Complete</button>-->
                     </li>
@@ -92,46 +92,44 @@
 
             <b-col cols="3" md="3">
                 <h5>Favorites</h5>
-                <list name="Got It" :items="favorites"></list>
-
                 <div v-for="(fav) in favorites">
                     <div>{{ fav }}</div>
                 </div>
 
                 <ol>
                     <li v-for="(todo, index) in favorites">
-                        {{ todo }}
-                        <!--                    <button @click="editTodo(index, todo)">Edit</button>-->
-                        <!--                    <button @click="removeTodo(index)">Complete</button>-->
-                    </li>
-                </ol>
-            </b-col>
-            <b-col cols="3" md="3">
-                <h5>Eaten</h5>
-
-                <ol>
-                    <li v-for="(todo, index) in eats">
                         {{ todo.name }}
                         <!--                    <button @click="editTodo(index, todo)">Edit</button>-->
                         <!--                    <button @click="removeTodo(index)">Complete</button>-->
                     </li>
                 </ol>
             </b-col>
+<!--            <b-col cols="3" md="3">-->
+<!--                <h5>Eaten</h5>-->
 
-            <b-col cols="3" md="3">
-                <h5>Expiring</h5>
-                <ol>
-                    <li v-for="(todo, index) in exp">
-                        {{ todo.name }}
-                        <!--                    <button @click="editTodo(index, todo)">Edit</button>-->
-                        <!--                    <button @click="removeTodo(index)">Complete</button>-->
-                    </li>
-                </ol>
-            </b-col>
+<!--                <ol>-->
+<!--                    <li v-for="(todo, index) in eats">-->
+<!--                        {{ todo.name }}-->
+<!--                        &lt;!&ndash;                    <button @click="editTodo(index, todo)">Edit</button>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                    <button @click="removeTodo(index)">Complete</button>&ndash;&gt;-->
+<!--                    </li>-->
+<!--                </ol>-->
+<!--            </b-col>-->
+
+<!--            <b-col cols="3" md="3">-->
+<!--                <h5>Expiring</h5>-->
+<!--                <ol>-->
+<!--                    <li v-for="(todo, index) in exp">-->
+<!--                        {{ todo.name }}-->
+<!--                        &lt;!&ndash;                    <button @click="editTodo(index, todo)">Edit</button>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                    <button @click="removeTodo(index)">Complete</button>&ndash;&gt;-->
+<!--                    </li>-->
+<!--                </ol>-->
+<!--            </b-col>-->
 
         </b-row>
 
-        <fcard :todos="todos"></fcard>
+        <fcard :todos="todos" @fav="addFavorite(todo)"></fcard>
 
     </b-container>
 

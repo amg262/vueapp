@@ -15,14 +15,13 @@ const app = new Vue({
     },
 
     methods: {
-        //
-        favoriteTodo() {
-            this.favorites.push(this.todo)
-            this.todo = ""
 
-            Console.log(this.todo)
-            Console.log("favs" + this.favorites)
+        addFavorite(newFav) {
+            this.favorites.push(newFav);
+            this.todo = {name: '', desc: ''};
 
+            console.log(newFav);
+            console.log("favs" + this.favorites);
         },
         // },
         // eatTodo() {
@@ -36,7 +35,7 @@ const app = new Vue({
         // },
         storeTodo() {
             this.todos.push(this.todo)
-            this.todo = ''
+            this.todo = {name: '', desc: ''}
         },
 
         //
@@ -61,9 +60,6 @@ const app = new Vue({
         //     this.selectedIndex = index
         // },
 
-        maths() {
-
-        }
     }
 
 
