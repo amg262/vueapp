@@ -21,7 +21,6 @@ Vue.component('fcard', {
 
     methods: {
 
-        //Hooking this up to the butto
         favoriteTodo(todo) {
             this.$emit("fav", todo);
             this.todo = {name: '', qty:'', desc: ''}
@@ -36,15 +35,7 @@ Vue.component('fcard', {
             this.todo = {name: '', qty:'', desc: ''}
 
         },
-        // storeTodo() {
-        //     this.todos.push(this.todo)
-        //     this.$emit('add', this.todo)
-        //     this.todo = {name: '', desc: ''}
-        // },
-        // removeTodo(index, todo) {
-        //     this.todos.splice(index, 1)
-        //     this.eats.push(todo)
-        // },
+
         updateTodo() {
             this.$emit("update", todo);
 

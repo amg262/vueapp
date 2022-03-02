@@ -92,30 +92,32 @@
 
             <b-col cols="3" md="3">
                 <h5>Favorites</h5>
-                <ol>
+                <ul>
                     <li v-for="(todo, index) in favorites">
+                        {{ todo.qty }}&nbsp; of
                         {{ todo.name }}
                     </li>
-                </ol>
+                </ul>
             </b-col>
             <b-col cols="3" md="3">
                 <h5>Eaten</h5>
-
-                <ol>
+                <ul>
                     <li v-for="(todo, index) in eaten">
+                        {{ todo.qty }}&nbsp; of
                         {{ todo.name }}
                     </li>
-                </ol>
+                </ul>
             </b-col>
-
             <b-col cols="3" md="3">
                 <h5>Expiring</h5>
-                <ol>
-                    <li v-for="(todo, index) in exp">
+                <ul>
+                    <li v-for="(todo, index) in expired">
+                        {{ todo.qty }}&nbsp; of
                         {{ todo.name }}
                     </li>
-                </ol>
+                </ul>
             </b-col>
+
 
         </b-row>
 

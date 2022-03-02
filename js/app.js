@@ -90,7 +90,23 @@ const app = new Vue({
 
             this.selectedIndex = index
         },
-
+        watch: {
+            todos: {
+                // call this function before the data in shoppingList changes
+                handler: function (newList) {
+                    // store in localStorage
+                    localStorage.setItem('list2', JSON.stringify(newList))
+                },
+                // watch nested properties as well
+                deep: true
+            }
+        },
+        mounted: function () {
+            // replace local array with one in local storage
+            if (localStorage.getItem('list2')) {
+                this.todos = JSON.parse(localStorage.getItem('list2'));
+            }
+        },
     }
 
 
