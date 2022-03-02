@@ -61,7 +61,7 @@ Vue.component('fcard', {
             console.log(index)
             console.log("todo")
             console.log(todo.name)
-            this.$emit("edit", todo);
+            this.$emit("edit", todo, index);
 
             this.isEditing = true
             this.todo = todo

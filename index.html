@@ -59,14 +59,14 @@
                 <input @click="storeTodo" class="btn btn-primary" type="submit" value="Add Item to the Fridge">
             </b-col>
             <b-col cols="6" md="6" v-else>
-                <b-form-input placeholder="What is the item called?" v-model="todo.desc"></b-form-input>
+                <b-form-input placeholder="What is the item called?" v-model="todo.name"></b-form-input>
                 <br>
                 <b-form-textarea
                         id="textarea"
                         max-rows=""
                         placeholder="Describe the item going into the fridge inventory"
                         rows="3"
-                        v-model="text"
+                        v-model="todo.desc"
                 ></b-form-textarea>
                 <br>
                 <input @click="updateTodo" class="btn btn-info" type="submit" value="Update this fridge item">
