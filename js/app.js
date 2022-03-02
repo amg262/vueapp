@@ -28,6 +28,8 @@ const app = new Vue({
 
             } else {
                 this.addExpired(newEaten)
+                this.expired.push(newExp)
+
                 //alert("Cant have Item " + newEaten.name + " qty of " + String(newEaten.qty))
 
             }
