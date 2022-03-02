@@ -17,17 +17,26 @@ const app = new Vue({
     methods: {
         addFavorite(newFav) {
             this.favorites.push(newFav);
-            this.todo = {name: '', qty:'', desc: ''}
+            this.todo = {name: '', qty: '', desc: ''}
         },
         addEaten(newEaten) {
-            newEaten.qty--
-            this.eaten.push(newEaten)
-            alert("Item: " + newEaten.name + " | " + "Qty: " + String(newEaten.qty))
+
+            if (newEaten.qty > 0) {
+                newEaten.qty--
+                alert("Item: " + newEaten.name + " with a " + "New Qty: " + String(newEaten.qty))
+                this.eaten.push(newEaten)
+
+            } else {
+                this.addExpired(newEaten)
+                //alert("Cant have Item " + newEaten.name + " qty of " + String(newEaten.qty))
+
+            }
+
             console.log(newEaten)
             console.log(newEaten.qty)
 
 
-            this.todo = {name: '', qty:'', desc: ''}
+            this.todo = {name: '', qty: '', desc: ''}
         },
         addExpired(newExp) {
             this.expired.push(newExp)
@@ -36,11 +45,11 @@ const app = new Vue({
             console.log(newExp)
             console.log(newExp.qty)
 
-            this.todo = {name: '', qty:'', desc: ''}
+            this.todo = {name: '', qty: '', desc: ''}
         },
         storeTodo() {
             this.todos.push(this.todo)
-            this.todo = {name: '', qty:'', desc: ''}
+            this.todo = {name: '', qty: '', desc: ''}
         },
 
         //
@@ -64,7 +73,7 @@ const app = new Vue({
             console.log(this.isEditing)
 
             this.todos.splice(todo, 1, index)
-            this.todo = {name: '', qty:'', desc: ''}
+            this.todo = {name: '', qty: '', desc: ''}
             this.isEditing = false
         },
         //

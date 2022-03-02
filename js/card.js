@@ -15,7 +15,8 @@ Vue.component('fcard', {
         },
         expired: {
             type: Array,
-        }
+        },
+        num: 0,
     },
 
     methods: {
@@ -79,6 +80,7 @@ Vue.component('fcard', {
     template: `
       <b-row>
       <b-col cols="3" md="3" v-for="(todo, index) in todos">
+        
         <b-card
             class="mb-2"
             img-alt="Image"
@@ -87,13 +89,16 @@ Vue.component('fcard', {
             style="max-width: 20rem;"
             tag="article"
             
-            :title="todo.name"
+            :title="'# ' + (num = index + 1)"
         >
-          <h6>Item:</h6>
+          
           <b-card-text>
-            {{ todo.desc }}
+            <strong>Name: </strong> {{ todo.name }}
+            <br/>
+            <strong>Desc: </strong> {{ todo.desc }}
+            <br/>
+            <strong>Qty: </strong> {{ todo.qty }}
           </b-card-text>
-          4
           <div class="mt-3">
             <b-button-group>
 
