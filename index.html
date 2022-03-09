@@ -29,11 +29,6 @@
         </b-navbar-toggle>
 
         <b-collapse id="navbar-toggle-collapse" is-nav>
-            <!--            <b-navbar-nav class="ml-auto">-->
-            <!--                <b-nav-item href="#">Link 1</b-nav-item>-->
-            <!--                <b-nav-item href="#">Link 2</b-nav-item>-->
-            <!--                <b-nav-item href="#" disabled>Disabled</b-nav-item>-->
-            <!--            </b-navbar-nav>-->
         </b-collapse>
     </b-navbar>
     <b-container class="p-5 m-5" fluid>
@@ -76,8 +71,6 @@
         </b-row>
 
 
-
-
         <br>
         <hr>
         <br>
@@ -85,40 +78,46 @@
         <b-row>
             <b-col cols="3" md="3">
                 <h5>Items</h5>
-                <ul>
-                    <li v-for="(todo, index) in todos">
-                        {{ todo.qty }}&nbsp; of
-                        {{ todo.name }}
-                    </li>
-                </ul>
+<!--                <ul>-->
+<!--                    <li v-for="(todo, index) in todos">-->
+<!--                        {{ todo.qty }}&nbsp; of-->
+<!--                        {{ todo.name }}-->
+<!--                    </li>-->
+<!--                </ul>-->
+                <list-group :key="todo" :groups="favorites"></list-group>
             </b-col>
 
             <b-col cols="3" md="3">
                 <h5>Favorites</h5>
-                <ul>
-                    <li v-for="(todo, index) in favorites">
-                        {{ todo.qty }}&nbsp; of
-                        {{ todo.name }}
-                    </li>
-                </ul>
+<!--                <ul>-->
+<!--                    <li v-for="(todo, index) in favorites">-->
+<!--                        {{ todo.qty }}&nbsp; of-->
+<!--                        {{ todo.name }}-->
+<!--                    </li>-->
+<!--                </ul>-->
+                <list-group :key="todo" :groups="favorites"></list-group>
             </b-col>
+
             <b-col cols="3" md="3">
                 <h5>Eaten</h5>
-                <ul>
-                    <li v-for="(todo, index) in eaten">
-                        {{ todo.qty }}&nbsp; of
-                        {{ todo.name }}
-                    </li>
-                </ul>
+<!--                <ul>-->
+<!--                    <li v-for="(todo, index) in eaten">-->
+<!--                        {{ todo.qty }}&nbsp; of-->
+<!--                        {{ todo.name }}-->
+<!--                    </li>-->
+<!--                </ul>-->
+                <list-group :key="todo" :groups="eaten"></list-group>
+
             </b-col>
             <b-col cols="3" md="3">
                 <h5>Expiring</h5>
-                <ul>
-                    <li v-for="(todo, index) in expired">
-                        {{ todo.qty }}&nbsp; of
-                        {{ todo.name }}
-                    </li>
-                </ul>
+<!--                <ul>-->
+<!--                    <li v-for="(todo, index) in expired">-->
+<!--                        {{ todo.qty }}&nbsp; of-->
+<!--                        {{ todo.name }}-->
+<!--                    </li>-->
+<!--                </ul>-->
+                <list-group :key="todo" :groups="eaten"></list-group>
             </b-col>
 
 
@@ -142,6 +141,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="js/app.js"></script>
 <script src="js/card.js"></script>
+<script src="js/list-group.js"></script>
 
 </body>
 </html>

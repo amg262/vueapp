@@ -5,7 +5,6 @@ const app = new Vue({
     data: {
         isEditing: false,
         todo: {name: 'item', qty: 1, desc: 'desc'},
-
         todos: [],
         foods: [],
         favorites: [],
@@ -29,24 +28,12 @@ const app = new Vue({
             } else {
                 this.addExpired(newEaten)
                 this.expired.push(newExp)
-
-                //alert("Cant have Item " + newEaten.name + " qty of " + String(newEaten.qty))
-
             }
-
-            console.log(newEaten)
-            console.log(newEaten.qty)
-
-
             this.todo = {name: '', qty: '', desc: ''}
         },
         addExpired(newExp) {
             this.expired.push(newExp)
             this.todos.splice(newExp, 1)
-            Console.log("addExpired")
-            console.log(newExp)
-            console.log(newExp.qty)
-
             this.todo = {name: '', qty: '', desc: ''}
         },
         storeTodo() {
@@ -54,40 +41,15 @@ const app = new Vue({
             this.todo = {name: '', qty: '', desc: ''}
         },
 
-        //
-        // removeTodo(index, todo) {
-        //     this.todos.splice(index, 1)
-        //     this.eats.push(todo)
-        // },
-        //
-        // unremoveTodo() {
-        //
-        // },
-        //
         updateTodo(todo, index) {
-
-            console.log('updatetodo')
-            console.log('todo')
-            console.log(todo)
-            console.log('index')
-            console.log(index)
-            console.log('isEditting')
-            console.log(this.isEditing)
-
             this.todos.splice(todo, 1, index)
             this.todo = {name: '', qty: '', desc: ''}
             this.isEditing = false
         },
-        //
+
         editTodo2(todo, index) {
-            console.log("edittodo2")
-            console.log("todo")
-            console.log(todo)
-            console.log("index")
-            console.log(index)
             this.isEditing = true
             this.todo = todo
-
             this.selectedIndex = index
         },
         watch: {
@@ -108,9 +70,4 @@ const app = new Vue({
             }
         },
     }
-
-
 })
-
-// myStorage = window.localStorage;
-// localStorage.setItem('todo', todo);
