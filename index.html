@@ -84,7 +84,7 @@
 <!--                        {{ todo.name }}-->
 <!--                    </li>-->
 <!--                </ul>-->
-                <list-group :key="todo" :groups="favorites"></list-group>
+                <list-group :key="todo" :groups="todos"></list-group>
             </b-col>
 
             <b-col cols="3" md="3">
@@ -117,7 +117,7 @@
 <!--                        {{ todo.name }}-->
 <!--                    </li>-->
 <!--                </ul>-->
-                <list-group :key="todo" :groups="eaten"></list-group>
+                <list-group :key="todo" :groups="expiring"></list-group>
             </b-col>
 
 
